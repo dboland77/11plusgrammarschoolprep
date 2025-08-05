@@ -10,7 +10,17 @@
 'use client';
 
 import { useState } from 'react';
-import { fullBank } from '../lib/word_bank'; // adjust the path if your list lives elsewhere
+import { fullBank } from '@/lib/wordBank'; // adjust the path if your list lives elsewhere
+import { toPacks } from '@/lib/chunkWordBank';
+
+interface Props {
+  initialWords: WordEntry[];
+}
+
+export const wordPacks = toPacks(fullBank, 25);
+
+// wordPacks[0].id === 1
+// wordPacks[0].words  ← first 25 entries
 
 interface WordEntry {
   word: string;
@@ -19,10 +29,10 @@ interface WordEntry {
   antonyms: string[];
 }
 
-export default function WordFlashCard() {
+export default function WordFlashCard({ initialWords }: Props) {
+  const total = initialWords.length;
   const [index, setIndex] = useState(0);
-  const total = fullBank.length;
-  const card: WordEntry = fullBank[index];
+  const card = initialWords[index];
 
   const next = () => setIndex((i) => Math.min(i + 1, total - 1));
   const prev = () => setIndex((i) => Math.max(i - 1, 0));
