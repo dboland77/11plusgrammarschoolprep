@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 
 // import WordFlashCard from "@/components/WordFlashCard";
-import { Searchbar } from "./SearchPack";
+import { Searchbar } from "@/components/SearchPack";
 
 export default function FlashClient() {
   const router = useRouter();
