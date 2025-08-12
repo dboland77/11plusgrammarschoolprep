@@ -1,37 +1,27 @@
-// app/flash/page.tsx
-"use client";
 
-import { useSearchParams, useRouter } from "next/navigation";
-import { toPacks } from "@/lib/chunkWordBank";
-import { fullBank } from "@/lib/wordBank";
-import WordFlashCard from "@/components/WordFlashCard";
-import PackMenu from "@/components/PackMenu"; // optional hamburger/back link
+'use client'
+import { useRouter } from "next/navigation";
 
-const packs = toPacks(fullBank, 25);
+// import WordFlashCard from "@/components/WordFlashCard";
+import { Searchbar } from "./SearchPack";
 
-export default function FlashPage() {
+export default function FlashClient() {
   const router = useRouter();
-  const params = useSearchParams();
-  const packId = parseInt(params.get("pack") ?? "1", 10);
-  const pack = packs.find((p) => p.id === packId) ?? packs[0];
-
-  // fallback if someone enters an invalid id
-  if (!pack) router.replace("/");
 
   return (
     <div className="space-y-8">
-      {/* tiny back-to-packs button */}
       <button
         className="text-sm text-blue-600 underline"
         onClick={() => router.push("/")}
       >
         ⬅︎ All Packs
       </button>
+      <Searchbar/>
 
-      <WordFlashCard /* from the canvas */
-        key={pack.id}           // reset internal index when pack changes
+      {/* <WordFlashCard
+        key={pack.id}        // reset internal index when pack changes
         initialWords={pack.words}
-      />
+      /> */}
     </div>
   );
 }
