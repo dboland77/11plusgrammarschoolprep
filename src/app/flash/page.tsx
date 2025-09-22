@@ -7,6 +7,9 @@ import { Searchbar } from "@/components/SearchPack";
 
 export default function FlashClient() {
   const router = useRouter();
+  const cuisines = ['Italian', 'Japanese', 'Chinese',
+       'Indian', 'Thai', 'French', 'American', 'Korean', 
+       'Greek', 'Spanish', 'Turkish']
 
   return (
     <div className="space-y-8">
@@ -16,7 +19,7 @@ export default function FlashClient() {
       >
         ⬅︎ All Packs
       </button>
-      <Searchbar/>
+    
 
       {/* <WordFlashCard
         key={pack.id}        // reset internal index when pack changes

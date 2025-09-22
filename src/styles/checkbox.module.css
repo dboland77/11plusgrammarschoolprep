@@ -1,0 +1,81 @@
+.foods {
+  --highlightColor: oklch(0.764 0.1924 65.38);
+  
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+label {
+  cursor: pointer;
+  border: 1px solid white;
+  padding: 1rem 2rem;
+  border-radius: 100px;
+  display: flex;
+  gap: 0.33rem;
+
+  &:focus-within {
+    outline: 3px solid var(--highlightColor);
+  }
+
+  svg {
+    width: 0;
+    transition: width 0.66s linear(
+      0,
+      0.009,
+      0.035 2.1%,
+      0.141,
+      0.281 6.7%,
+      0.723 12.9%,
+      0.938 16.7%,
+      1.017,
+      1.077,
+      1.121,
+      1.149 24.3%,
+      1.159,
+      1.163,
+      1.161,
+      1.154 29.9%,
+      1.129 32.8%,
+      1.051 39.6%,
+      1.017 43.1%,
+      0.991,
+      0.977 51%,
+      0.974 53.8%,
+      0.975 57.1%,
+      0.997 69.8%,
+      1.003 76.9%,
+      1.004 83.8%,
+      1
+    );
+    transform-origin: left center;
+    fill: var(--highlightColor);
+  }
+  
+  &:has(:checked) {
+    border-color: var(--highlightColor);
+    background: color-mix(in srgb, var(--highlightColor), transparent 80%);
+
+    svg {
+      width: 0.88lh;
+    }
+  }
+}
+
+.screenreader-only {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+body {
+  margin: 0;
+  padding: 2rem;
+  font: 100% system-ui;
+  background: oklch(16% 0% 68deg);
+  color: white;
+}
