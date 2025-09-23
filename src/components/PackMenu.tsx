@@ -1,6 +1,7 @@
 'use client';
 
 import { Button } from '@/components/Button';
+import { useState } from 'react';
 import clsx from 'clsx';
 
 interface WordEntry {

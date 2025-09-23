@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from '../styles/checkbox.module.css'
 
 export interface CheckboxProps {
@@ -6,6 +6,7 @@ export interface CheckboxProps {
 }
 
 export const Checkbox:React.FC<CheckboxProps> = ({buttonLabel}) => {
+   const [isChecked, setIsChecked] = useState(false)
   return (
     <div className={styles.checkboxWrapper}
     

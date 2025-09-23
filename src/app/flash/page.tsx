@@ -1,22 +1,30 @@
 
 'use client'
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
-// import WordFlashCard from "@/components/WordFlashCard";
+import WordFlashCard from "@/components/WordFlashCard";
 import { Searchbar } from "@/components/SearchPack";
 import {Checkbox} from '@/components/Checkbox';
+import { toPacks } from '@/lib/chunkWordBank';
+import { fullBank } from '@/lib/wordBank';
 
 export default function FlashClient() {
   const router = useRouter();
-  const cuisines = ['Italian', 'Japanese', 'Chinese',
-       'Indian', 'Thai', 'French', 'American', 'Korean', 
-       'Greek', 'Spanish', 'Turkish']
+ const packs = toPacks(fullBank, 25);
+ const searchParams = useSearchParams()
+ 
+const selectedPack= Number(searchParams.get('pack')) || 0
+
+const pack = packs[selectedPack] || {id:0, words:['']}
+
+
+
 
   return (
     <>
       <Checkbox
       buttonLabel="sdfdsf"
-      checked
+      
       />    
    
       <button
@@ -26,10 +34,10 @@ export default function FlashClient() {
         ⬅︎ All Packs
       </button>
 
-      {/* <WordFlashCard
+      <WordFlashCard
         key={pack.id}        // reset internal index when pack changes
         initialWords={pack.words}
-        /> */}
+        />
         </>
   );
 }
