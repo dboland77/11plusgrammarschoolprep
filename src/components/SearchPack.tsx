@@ -1,7 +1,7 @@
 'use client';
 
 import { useSearchParams, useRouter } from 'next/navigation';
-import { Suspense, useEffect, useMemo } from 'react';
+import { Suspense, useEffect } from 'react';
 import { toPacks } from '@/lib/chunkWordBank';
 import { fullBank } from '@/lib/wordBank';
 
@@ -27,11 +27,6 @@ function Search() {
       router.replace(`?${next.toString()}`, { scroll: false });
     }
   }, [packParam, safePackId, params, router]);
-
-  //  const pack = useMemo(
-  //    () => packs.find((p) => p.id === safePackId) ?? packs[0],
-  //    [safePackId]
-  //  );
 
   return <input placeholder='Search...' />;
 }
