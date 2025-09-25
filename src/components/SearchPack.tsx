@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useSearchParams, useRouter } from 'next/navigation';
-import { Suspense, useEffect } from 'react';
-import { toPacks } from '@/lib/chunkWordBank';
-import { fullBank } from '@/lib/wordBank';
+import { useSearchParams, useRouter } from "next/navigation";
+import { Suspense, useEffect } from "react";
+import { toPacks } from "@/lib/chunkWordBank";
+import { fullBank } from "@/lib/wordBank";
 
 const packs = toPacks(fullBank, 25);
 const MIN_ID = packs[0]?.id ?? 1;
@@ -13,7 +13,7 @@ function Search() {
   const params = useSearchParams();
   const router = useRouter();
 
-  const packParam = params.get('pack');
+  const packParam = params.get("pack");
   const parsed = Number.isInteger(Number(packParam))
     ? parseInt(packParam!, 10)
     : MIN_ID;
@@ -23,18 +23,17 @@ function Search() {
   useEffect(() => {
     if (packParam === null || String(safePackId) !== packParam) {
       const next = new URLSearchParams(params);
-      next.set('pack', String(safePackId));
+      next.set("pack", String(safePackId));
       router.replace(`?${next.toString()}`, { scroll: false });
     }
   }, [packParam, safePackId, params, router]);
 
-  return <input placeholder='Search...' />;
+  return <input placeholder="Search..." />;
 }
 
 export function Searchbar() {
   return (
-    // You could have a loading skeleton as the `fallback` too
-    <Suspense>
+    <Suspense fallback={<div>loading</div>}>
       <Search />
     </Suspense>
   );
