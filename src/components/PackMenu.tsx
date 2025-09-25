@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/Button";
 import clsx from "clsx";
+import styles from "@/styles/wordpacks.module.css";
 
 interface WordEntry {
   word: string;
@@ -24,13 +25,13 @@ interface Props {
 export default function PackMenu({ packs, onPick, current }: Props) {
   return (
     <div className="">
-      <h1 className="">Choose a Pack</h1>
+      <h1 className="">Choose a Pack or Packs</h1>
 
-      <div className="">
+      <div className={styles.flexcontainer}>
         {packs.map((pack) => (
           <Button
             key={pack.id}
-            variant="outline"
+            variant="tile"
             className={clsx("", current === pack.id && "")}
             onClick={() => onPick(pack.id)}
           >

@@ -3,7 +3,7 @@
 import { clsx } from "clsx";
 import { ButtonHTMLAttributes, forwardRef } from "react";
 
-export type ButtonVariant = "primary" | "outline" | "ghost" | "destructive";
+export type ButtonVariant = "primary" | "back" | "next" | "tile";
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: ButtonVariant;
@@ -14,9 +14,9 @@ const base = "";
 
 const variants: Record<ButtonVariant, string> = {
   primary: "",
-  outline: "",
-  ghost: "",
-  destructive: "",
+  back: "",
+  next: "",
+  tile: "",
 };
 
 export const Button = forwardRef<HTMLButtonElement, Props>(
