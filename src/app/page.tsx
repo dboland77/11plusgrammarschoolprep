@@ -1,4 +1,3 @@
-// app/page.tsx
 'use client';
 import { toPacks } from '@/lib/chunkWordBank';
 import { fullBank } from '@/lib/wordBank';
