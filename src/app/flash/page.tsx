@@ -17,7 +17,7 @@ export default function FlashClient() {
   return (
     <>
       <button
-        className='text-sm text-blue-600 underline'
+        className=''
         onClick={() => router.push('/')}
       >
         ⬅︎ All Packs
